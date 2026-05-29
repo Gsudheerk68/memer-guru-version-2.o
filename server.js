@@ -1,18 +1,19 @@
 import dotenv from 'dotenv'
 dotenv.config()
-
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import templateRoutes from './routes/templateRoutes.js'
 import memeRoutes from './routes/memeRoutes.js'
+
+const app = express()  // ✅ create app first
+
+// ✅ single cors setup, no trailing slash
 app.use(cors({
-  origin: "https://memersguruv2.netlify.app/",
+  origin: "https://memersguruv2.netlify.app",
   credentials: true
 }))
 
-const app = express()
-app.use(cors())
 app.use(express.json())
 
 app.use('/api/templates', templateRoutes)
@@ -26,7 +27,7 @@ mongoose
   .then(() => {
     console.log('MongoDB Connected')
     app.listen(process.env.PORT || 5000, () =>
-      console.log(`Server running on http://localhost:${process.env.PORT || 5000}`)
+      console.log(`Server running on port ${process.env.PORT || 5000}`)
     )
   })
   .catch((err) => {
