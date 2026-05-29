@@ -7,7 +7,7 @@ import cors from 'cors'
 import templateRoutes from './routes/templateRoutes.js'
 import memeRoutes from './routes/memeRoutes.js'
 app.use(cors({
-  origin: "https://memersguruv2.netlify.app",
+  origin: "https://memersguruv2.netlify.app/",
   credentials: true
 }))
 
