@@ -4,13 +4,17 @@ dotenv.config()
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import passport from 'passport'
 import templateRoutes from './routes/templateRoutes.js'
 import memeRoutes from './routes/memeRoutes.js'
+import authRoutes from './routes/authRoutes.js'
 
 const app = express()
-app.use(cors())
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
 app.use(express.json())
+app.use(passport.initialize())
 
+app.use('/api/auth', authRoutes)
 app.use('/api/templates', templateRoutes)
 app.use('/api/memes', memeRoutes)
 

@@ -6,6 +6,7 @@ const memeSchema = new mongoose.Schema({
   mediaType: String,
   likes: { type: Number, default: 0 },
   views: { type: Number, default: 0 },
+  uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
 })
 
